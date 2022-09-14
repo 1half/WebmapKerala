@@ -9,7 +9,27 @@
     <link rel="stylesheet" href="./styles.css">
 </head>
 <body>
-    <div class="column-map" id="openlayers-map" ></div>
+    <div class="grid-container">
+        <div class="grid-1">
+            <div class="column-menu">
+                <p id="cityname">"Information"</p>
+            </div>            
+        </div>
+
+        <div class="grid-2">
+            <div class="column-map" id="openlayers-map" ></div>
+        </div>
+
+        <div class="grid-3">
+            <div class="column-navigation">
+                <a title="Home" id="Home" class="active">
+                    <img class="icons" src="./data/icon/HomeIco.png" id="Home"></img>
+                </a>
+            </div>
+        </div>
+
+    </div>
+    
     <script src="./libs/v6.15.0-dist/ol.js"></script>
     <script src="./main.js"></script>   
 </body>
