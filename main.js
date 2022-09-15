@@ -19,9 +19,94 @@ function init(){
         target:"openlayers-map"
         
     })
+    // Waterfalls
+
+    const LociconBlue = new ol.style.Icon({
+        src:'./data/icon/g280.png',
+        oppacity:1,
+        scale:0.04
+    })
+
+    const waterfallstyle = function(feature){
+        console.log(feature.get('Name'))
+        let wfname = feature.get('Name');
+        let wfnameTostr = wfname.toString();
+        const styles = [
+            new ol.style.Style({
+                image: new ol.style.Circle({
+                    fill:new ol.style.Fill({
+                        color:[77,219,105,0.6]
+                    }),
+                    stroke:new ol.style.Stroke({
+                        color:[6,125,34,1],
+                        width:2
+                    }),
+                    radius:5
+                })/*,
+                text:new ol.style.Text({
+                    text:wfnameTostr,
+                    scale:1.5,
+                    fill:new ol.style.Fill({
+                        color:[232,26,26,1]
+                    }),
+                    storke:new ol.style.Stroke({
+                        color:[232,26,26,1],
+                        width:0.3
+                    })
+                })*/
+            })
+            
+        ]
+
+        return styles
+
+
+    }
+
+    const kerWaterfalls = new ol.layer.Vector({
+        source:new ol.source.Vector({
+            format:new ol.format.GeoJSON(),
+            url:"./data/Geojson/KeralaWaterfalls.geojson"
+        }),
+        title:'Waterfalls',
+        style: new ol.style.Style({
+            image:LociconBlue
+        })
+    })
+    map.addLayer(kerWaterfalls)
+
+    const overlayContainerelement = document.querySelector('.overlay-container')
+    const overlaylayer = new ol.Overlay({
+        element:overlayContainerelement
+    })
+    map.addOverlay(overlaylayer);
+
+    const overlayFeatName = document.getElementById('waterfall-name');
+
+    map.on('pointermove', function(e){
+        overlaylayer.setPosition(undefined)
+        map.forEachFeatureAtPixel(e.pixel,function(feature,layer){
+            let coordinateclicked = e.coordinate;
+            console.log(feature.get('Name'))
+            let WFName = feature.get('Name');
+
+                overlaylayer.setPosition(coordinateclicked);
+                overlayFeatName.innerHTML = WFName;
+
+        
+        },{
+            layerFilter: function(layerCandidate){
+                return layerCandidate.get('title') === 'Waterfalls'
+            }
+        } 
+        )
+    })
+
+
     map.on("click",function(e){
         console.log(e.coordinate)
     })
+
 
 
 }

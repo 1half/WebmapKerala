@@ -12,8 +12,9 @@
     <div class="grid-container">
         <div class="grid-1">
             <div class="column-menu">
-                <p id="cityname">"Information"</p>
-            </div>            
+                <p id="sitename">Information</p>
+                <img id="infoimage" src="./data/images/Kerala-Tourism.jpg" alt="Kerala">
+            </div>          
         </div>
 
         <div class="grid-2">
@@ -25,9 +26,19 @@
                 <a title="Home" id="Home" class="active">
                     <img class="icons" src="./data/icon/HomeIco.png" id="Home"></img>
                 </a>
+                <div class="dots">
+                    <a title="Adyanapara" id="Adyanapara" class="Water Falle">
+                        <img class="icons" src="./data/icon/dotBIco.png" id="Blue"></img>
+                    </a>
+                    
+                </div>                
             </div>
         </div>
 
+    </div>
+
+    <div class="overlay-container">
+        <span class = 'overlaytext' id = 'waterfall-name'></span><br>
     </div>
     
     <script src="./libs/v6.15.0-dist/ol.js"></script>
