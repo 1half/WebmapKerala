@@ -8,7 +8,7 @@ body{
     overflow: auto;
 }
 .column-navigation img{
-    width:60%;
+    width:100%;
     padding-left: 5%;
     padding-right:5%;
     padding-top: 20%;
@@ -17,10 +17,13 @@ body{
 
 .dots img{
     height: 30px;
+    width: 70px;
     padding-left: 20%;
     padding-right:20%;
     padding-top: 10%;
 }
+
+
 
 .grid-container{
     display: grid;

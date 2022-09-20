@@ -21,47 +21,25 @@ function init(){
     })
     // Waterfalls
 
-    const LociconBlue = new ol.style.Icon({
+    const LocationBlue = new ol.style.Icon({
         src:'./data/icon/g280.png',
         oppacity:1,
         scale:0.04
     })
 
-    const waterfallstyle = function(feature){
-        console.log(feature.get('Name'))
-        let wfname = feature.get('Name');
-        let wfnameTostr = wfname.toString();
-        const styles = [
-            new ol.style.Style({
-                image: new ol.style.Circle({
-                    fill:new ol.style.Fill({
-                        color:[77,219,105,0.6]
-                    }),
-                    stroke:new ol.style.Stroke({
-                        color:[6,125,34,1],
-                        width:2
-                    }),
-                    radius:5
-                })/*,
-                text:new ol.style.Text({
-                    text:wfnameTostr,
-                    scale:1.5,
-                    fill:new ol.style.Fill({
-                        color:[232,26,26,1]
-                    }),
-                    storke:new ol.style.Stroke({
-                        color:[232,26,26,1],
-                        width:0.3
-                    })
-                })*/
-            })
-            
-        ]
+    const Locationselect = new ol.style.Icon({
+        src: './data/icon/locationred.svg',
+        oppacity:1,
+        scale:0.05
+    })
 
-        return styles
+    const fallstyle = new ol.style.Style({
+        image:LocationBlue
+    })
 
-
-    }
+    const fallstyleselected = new ol.style.Style({
+        image: Locationselect
+    })
 
     const kerWaterfalls = new ol.layer.Vector({
         source:new ol.source.Vector({
@@ -69,9 +47,7 @@ function init(){
             url:"./data/Geojson/KeralaWaterfalls.geojson"
         }),
         title:'Waterfalls',
-        style: new ol.style.Style({
-            image:LociconBlue
-        })
+        style: fallstyle
     })
     map.addLayer(kerWaterfalls)
 
@@ -81,13 +57,47 @@ function init(){
     })
     map.addOverlay(overlaylayer);
 
-    const overlayFeatName = document.getElementById('waterfall-name');
+    //Map click logic
+    const naviElements = document.querySelector('.dots');
+    const sitenameElement = document.getElementById('fallname');
+    const siteImageElement = document.getElementById('infoimage');
+    const mapView =  map.getView();
+
+    map.on('singleclick',function(evnt){        
+        map.forEachFeatureAtPixel(evnt.pixel,function(feature,layer){
+            let sitename = feature.get('fallname');
+            let naviElement =  naviElements.children.namedItem(sitename);
+            //console.log(naviElement)
+            mainLogic(feature,naviElement)
+        })
+    })
+
+    function mainLogic(feature,clickedNewElemnt){
+        let currentActiveElemnt = document.querySelector('.active');
+        console.log(currentActiveElemnt)
+        currentActiveElemnt.className = currentActiveElemnt.className.replace('active','')
+        clickedNewElemnt.className = 'active'
+
+        //Zoom in feature
+        let featurecoordinate = feature.get('geometry').getCoordinates();
+        mapView.animate({center: featurecoordinate},{zoom:9})
+
+        let fallfeatures = kerWaterfalls.getSource().getFeatures();
+        fallfeatures.forEach(function(feature){
+            feature.setStyle(fallstyle)
+        })
+        feature.setStyle(fallstyleselected)
+
+    }
+
+
+    //Map pointer/*
+    /*const overlayFeatName = document.getElementById('waterfall-name');
 
     map.on('pointermove', function(e){
         overlaylayer.setPosition(undefined)
         map.forEachFeatureAtPixel(e.pixel,function(feature,layer){
             let coordinateclicked = e.coordinate;
-            console.log(feature.get('Name'))
             let WFName = feature.get('Name');
 
                 overlaylayer.setPosition(coordinateclicked);
@@ -100,12 +110,12 @@ function init(){
             }
         } 
         )
-    })
+    })*/
 
 
-    map.on("click",function(e){
+    /*map.on("click",function(e){
         console.log(e.coordinate)
-    })
+    })*/
 
 
 
