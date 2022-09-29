@@ -11,6 +11,6 @@
 { "type": "Feature", "properties": { "Name": "Kalakkayam Waterfalls", "District": "Thiruvanandapuram", "ImageName": "Kalakkayam-Image", "fallname": "Kalakkayam" }, "geometry": { "type": "Point", "coordinates": [ 77.080927419138462, 8.767398770634626, 157.385880070060693 ] } },
 { "type": "Feature", "properties": { "Name": "Keezharkuth Waterfalls", "District": "Idukki", "ImageName": "Keezharkuth-Image", "fallname": "Keezharkuth" }, "geometry": { "type": "Point", "coordinates": [ 76.882034740099513, 9.908571327704806, 406.857913666290813 ] } },
 { "type": "Feature", "properties": { "Name": "Madammakkulam Waterfalls", "District": "Idukki", "ImageName": "Madammakkulam-Image", "fallname": "Madammakkulam" }, "geometry": { "type": "Point", "coordinates": [ 76.928480444640812, 9.615408753204907, 996.826060967148692 ] } },
-{ "type": "Feature", "properties": { "Name": "Athirapalli and Vazhachal waterfall", "District": "Thrissur", "ImageName": "Athirapalli_and_Vazhachal-Image", "fallname": "Athirappalli_and_Vazhachal" }, "geometry": { "type": "Point", "coordinates": [ 76.579982640031332, 10.292962103155707, 0.0 ] } }
+{ "type": "Feature", "properties": { "Name": "Athirapalli and Vazhachal waterfall", "District": "Thrissur", "ImageName": "Athirappalli_and_Vazhachal-Image", "fallname": "Athirappalli_and_Vazhachal" }, "geometry": { "type": "Point", "coordinates": [ 76.579982640031332, 10.292962103155707, 0.0 ] } }
 ]
 }
