@@ -245,3 +245,59 @@ body{
    
 
   }
+
+  @media screen and (max-height:560px){
+   
+    
+
+    .column-navigation{
+        vertical-align: center;
+        display:flex;
+        justify-content: space-between;
+        flex-direction: column;
+        flex:1;
+            
+    }
+
+    #Home {
+        width: 80%;
+        height:9%;
+        padding-left: 6px;
+        padding-right:6px;
+        padding-top: 0%;
+    
+    }
+    
+    .column-navigation img:not(#Home){
+        height: 3%;
+        width: 90%;
+        padding-left: 2px;
+        padding-right:5px;
+        padding-top: 0%;
+        padding-bottom: 0%;
+        
+    }
+   
+    .grid-3{
+        display:flex;
+    }
+    
+
+    #fallname{
+        height: 5%;
+        padding:20px;
+        text-align: center;
+        font-size: 16px;
+
+    }
+    #infoimage{
+        display: block;
+        margin:auto;
+        height:50%;
+        width:60%;
+        margin-top: 40px;
+    }
+   
+
+  }
+
